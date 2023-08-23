@@ -6,7 +6,6 @@ import ProductDetail from './components/Product-Detail.vue';
 </script>
 
 <template>
-  <header>
     
 
     <div class="container mt-5">
@@ -17,7 +16,6 @@ import ProductDetail from './components/Product-Detail.vue';
         <RouterLink to="/about">About</RouterLink>
       </nav> -->
     </div>
-  </header>
 
   <RouterView />
 </template>

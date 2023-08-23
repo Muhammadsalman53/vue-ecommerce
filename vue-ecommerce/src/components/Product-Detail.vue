@@ -12,7 +12,7 @@ export default {
             .then(res => {
                 // console.log(res);
                 list.value = res.data.products
-                // console.log(list.value);
+                console.log(list.value);
 
             }).catch(err => {
                 console.log(err);
@@ -30,7 +30,7 @@ export default {
         <div class="row">
             <div class="col-md-6 order-lg-0 order-md-0">
                 <div class="product-image">
-                    <img src="../assets/fl studio mobile apk.webp" alt="Product Image" class="img-fluid card-img">
+                    <img :src="item.images[0]" alt="Product Image" class="img-fluid card-img">
                 </div>
             </div>
             <div class="col-md-6 order-lg-1 pt-lg-3 order-md-1 card-text-center">
