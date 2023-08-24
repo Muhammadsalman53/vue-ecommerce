@@ -1,12 +1,9 @@
 <script setup>
-// import ProductDetail from '../components/Product-Detail.vue';
-// import BuyNow from '../components/BuyNow.vue'
+import TheWelcome from '../components/TheWelcome.vue'
 </script>
 
 <template>
   <main>
-    <!-- <h1>hello</h1> -->
-    <!-- <ProductDetail/> -->
-    <!-- <BuyNow/> -->
+    <TheWelcome />
   </main>
 </template>
