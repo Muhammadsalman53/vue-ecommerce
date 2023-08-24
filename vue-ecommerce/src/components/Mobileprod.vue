@@ -11,7 +11,7 @@
           <div class="carousel-inner">
             <div class="carousel-item active">
               <div class="d-flex justify-content-center flex-wrap">
-                <div v-for="(item, index) in slicedProducts" :key="item.id" @click="detiale(item)" class="card mx-2" style="width: 17rem;">
+                <div v-for="(item, index) in slicedProducts" :key="item.id" class="card mx-2" style="width: 17rem;">
                       <!-- <router-link to="/product"> -->
                       <img style="width: 100%; height: 200px;" :src="item.images[0]" class="card-img-top" alt="...">
                       <div class="card-body">
@@ -43,20 +43,12 @@
 <script>
 import axios from 'axios';
 import { onMounted, ref, computed } from 'vue';
-import { useRouter } from 'vue-router';
 
 export default {
   name: 'Mobileprod',
   setup() {
-    const route = useRouter();
     const list = ref([]);
     const currentPage = ref(0);
-
-    function detiale(item) {
-      console.log(item);
-      route.push({ name: 'ProductDetails', path: '/product', params: { id: item.id } });
-      this.$emit('getid', item)
-    }
 
     onMounted(async () => {
       try {
@@ -81,12 +73,10 @@ export default {
       const maxPage = Math.ceil(list.value.length / 4) - 1;
       currentPage.value = Math.min(currentPage.value + 1, maxPage);
     };
-
     return {
       slicedProducts,
       goToPreviousPage,
-      goToNextPage,
-      detiale
+      goToNextPage
     };
   }
 };
