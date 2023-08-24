@@ -1,10 +1,10 @@
 <template>
-    <div class="container pt-5 pb-5">
+    <div class="container pt-4 pb-4">
         <div class="row d-flex justify-content-center align-items-center">
 
             <div class="col-lg-12 col-xl-11">
-                <div class="card text-black">
-                    <div class="p-md-5">
+                <div class="card text-black shadow px-5">
+                    <div class="p-md-3">
                         <div class="row justify-content-center">
                             <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 
@@ -38,7 +38,7 @@
 
                                     <div class="form-check d-flex justify-content-center mb-5">
                                         <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
-                                        <label class="form-check-label" for="form2Example3">
+                                        <label class="form-check-label justify-content-start" for="form2Example3">
                                             I agree all statements in <a href="#!">Terms of service</a>
                                         </label>
                                     </div>

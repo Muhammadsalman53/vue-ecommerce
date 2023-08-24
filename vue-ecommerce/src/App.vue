@@ -1,14 +1,11 @@
 <script setup>
-  import Login from "./components/Login.vue"
-  // import SignUp from "./components/SignUp.vue"
 
 </script>
 
 <template>
   <div id="app">
-    
-      <Login/>
-    
+    <router-link to="/"></router-link>
+    <router-view/>
   </div>
 
 </template>
