@@ -16,6 +16,7 @@ coverage
 
 /cypress/videos/
 /cypress/screenshots/
+vue-ecommerce\package-lock.json
 
 # Editor directories and files
 .vscode/*

@@ -1,3 +1,4 @@
+<!--  {name: 'product', params: { id: item.id }} -->
 <template>
   <section class="pt-4" id="mobileproduct">
     <div class="col-12" id="mble-products">
@@ -10,16 +11,20 @@
           <div class="carousel-inner">
             <div class="carousel-item active">
               <div class="d-flex justify-content-center flex-wrap">
-                <div @click="" v-for="(item, index) in slicedProducts" :key="item.id" class="card mx-2" style="width: 17rem;">
-                  <img style="width: 100%; height: 200px;" :src="item.images[0]" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">{{ item.title }}</h5>
-                    <p class="card-text">{{ item.description }}</p>
-                    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-                  </div>
+                <div v-for="(item, index) in slicedProducts" :key="item.id" @click="detiale(item)" class="card mx-2" style="width: 17rem;">
+                      <!-- <router-link to="/product"> -->
+                      <img style="width: 100%; height: 200px;" :src="item.images[0]" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">{{ item.title }}</h5>
+                        <p class="card-text">{{ item.description }}</p>
+                        <p class="card-footer">{{ item.price }} $</p>
+                      <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                      
+                    </div>
+                  <!-- </router-link> -->
                 </div>
               </div>
-            </div>
+              </div>
           </div>
           <button class="carousel-control-prev" type="button" @click="goToPreviousPage" data-bs-target="#carouselMobControls" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -38,12 +43,20 @@
 <script>
 import axios from 'axios';
 import { onMounted, ref, computed } from 'vue';
+import { useRouter } from 'vue-router';
 
 export default {
   name: 'Mobileprod',
   setup() {
+    const route = useRouter();
     const list = ref([]);
     const currentPage = ref(0);
+
+    function detiale(item) {
+      console.log(item);
+      route.push({ name: 'ProductDetails', path: '/product', params: { id: item.id } });
+      this.$emit('getid', item)
+    }
 
     onMounted(async () => {
       try {
@@ -57,7 +70,6 @@ export default {
     const slicedProducts = computed(() => {
       const startIndex = currentPage.value * 3;
       const endIndex = startIndex + 4;
-      console.log(currentPage.value);
       return list.value.slice(startIndex, endIndex);
     });
 
@@ -73,7 +85,8 @@ export default {
     return {
       slicedProducts,
       goToPreviousPage,
-      goToNextPage
+      goToNextPage,
+      detiale
     };
   }
 };
