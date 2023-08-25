@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import axiosInstance from "../utils/axios";
 import { onMounted, ref, watch } from "vue";
 import { useRouter } from "vue-router";
 
@@ -80,8 +80,8 @@ export default {
       });
     }
     const fetchCategories = () => {
-      axios
-        .get("https://dummyjson.com/products/categories")
+      axiosInstance
+        .get("/products/categories")
         .then((response) => {
           console.log("Categories:", response.data);
           categories.value = response.data;
@@ -93,10 +93,8 @@ export default {
     };
     const fetchProducts = () => {
       if (selectedCategory.value) {
-        axios
-          .get(
-            `https://dummyjson.com/products/category/${selectedCategory.value}`
-          )
+        axiosInstance
+          .get(`/products/category/${selectedCategory.value}`)
           .then((response) => {
             list.value = response.data.products;
           })
@@ -108,7 +106,7 @@ export default {
     };
     onMounted(async () => {
       try {
-        const response = await axios.get("https://dummyjson.com/products");
+        const response = await axiosInstance.get("/products");
         list.value = response.data.products;
       } catch (error) {
         console.error(error);
