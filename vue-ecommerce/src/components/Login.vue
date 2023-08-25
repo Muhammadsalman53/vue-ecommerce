@@ -47,7 +47,6 @@
                             </p>
                             <router-view />
                         </div>
-
                     </form>
                 </div>
             </div>
@@ -70,8 +69,6 @@ export default {
     methods: {
 
         loginUser() {
-
-
             axios.post('https://dummyjson.com/auth/login', {
                 username: this.email,
                 password: this.password,
@@ -96,9 +93,6 @@ export default {
 </script>
 
 <style scoped>
-.bg-color{
-    background: red;
-}
 .login-btn {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
