@@ -2,7 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Login from "../components/Login.vue";
 import SignUp from "../components/SignUp.vue";
 import HomeView from "../views/HomeView.vue";
-
+import productDetail from "../components/Product-Detail.vue";
+import ProductCategory from "../components/HelloWorld.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   
@@ -22,8 +23,20 @@ const router = createRouter({
       name: 'home',
       component: HomeView,
       meta: {requiresAuth : true}
+    },
+    {
+      path: '/product_detail/:id',
+      name: 'product_detail',
+      component: productDetail,
+      meta: {requiresAuth : true}
+    },
+    {
+      path: '/productcategory',
+      name: 'productcategory',
+      component: ProductCategory,
+      meta: {requiresAuth : true}
     }
-  ]
+  ],
 });
 router.beforeEach((to, from, next) => {
 

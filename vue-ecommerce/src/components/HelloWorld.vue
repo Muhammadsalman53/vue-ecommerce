@@ -3,22 +3,18 @@
     <div class="text-dark my-3">
       <h5>Mobile in Pakistan</h5>
     </div>
-    <div><hr /></div>
+    <div>
+      <hr />
+    </div>
     <div class="row">
       <div class="col-sm-12 col-md-4 col-lg-4">
         <div class="h5">Category</div>
         <div class="pl-5">
           <div class="m-3" v-for="category in categories" :key="category">
-            <a
-              @click="fetchProducts(category)"
-              href="#"
-              style="text-decoration: none"
-              :class="{
-                active: selectedCategory === category,
-                unselected: selectedCategory !== category,
-              }"
-              >{{ category }}</a
-            >
+            <a @click="fetchProducts(category)" href="#" style="text-decoration: none" :class="{
+              active: selectedCategory === category,
+              unselected: selectedCategory !== category,
+            }">{{ category }}</a>
           </div>
         </div>
         <hr />
@@ -29,41 +25,19 @@
             <div class="col-md-4">
               <div id="carouselExample" class="carousel slide">
                 <div class="carousel-inner">
-                  <div
-                    class="carousel-item"
-                    :class="{ active: index === 0 }"
-                    v-for="(image, index) in item.images"
-                    :key="index"
-                  >
-                    <img
-                      :src="image"
-                      class="d-block w-100"
-                      alt="Product Image"
-                    />
+                  <div class="carousel-item" :class="{ active: index === 0 }" v-for="(image, index) in item.images"
+                    :key="index">
+                    <img :src="image" class="d-block w-100" alt="Product Image" />
                   </div>
                 </div>
-                <button
-                  class="carousel-control-prev"
-                  type="button"
-                  data-bs-target="#carouselExample"
-                  data-bs-slide="prev"
-                >
-                  <span
-                    class="carousel-control-prev-icon"
-                    aria-hidden="true"
-                  ></span>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                  data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                   <span class="visually-hidden">Previous</span>
                 </button>
-                <button
-                  class="carousel-control-next"
-                  type="button"
-                  data-bs-target="#carouselExample"
-                  data-bs-slide="next"
-                >
-                  <span
-                    class="carousel-control-next-icon"
-                    aria-hidden="true"
-                  ></span>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                  data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
                   <span class="visually-hidden">Next</span>
                 </button>
               </div>
@@ -77,12 +51,8 @@
                 </p>
 
                 <p class="card-text">
-                  <small class="text-body-white badge text-bg-success"
-                    >Stock avaliable {{ item.stock }}</small
-                  >
-                  <small class="m-2 text-body-white badge text-bg-success"
-                    >Rating {{ item.rating }}</small
-                  >
+                  <small class="text-body-white badge text-bg-success">Stock avaliable {{ item.stock }}</small>
+                  <small class="m-2 text-body-white badge text-bg-success">Rating {{ item.rating }}</small>
                 </p>
               </div>
             </div>
@@ -97,7 +67,8 @@
 import axios from "axios";
 import { onMounted } from "vue";
 import { ref } from "vue";
-
+// import Header from "../components/Header.vue"
+// import Header from "../components/Header.vue"
 export default {
   name: "HelloWorld",
 

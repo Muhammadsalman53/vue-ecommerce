@@ -1,20 +1,18 @@
 <script setup>
-import Header from './components/Header.vue';
-import Footer from './components/Footer.vue';
+// import Header from './components/Header.vue';
+// import Footer from './components/Footer.vue';
 import { RouterView } from 'vue-router';
 </script>
 
 <template>
-
-  <Header />
+  <!-- <Header />
   <RouterView></RouterView>
-  <Footer />
-   
+  <Footer /> -->
+
   <div id="app">
     <router-link to="/"></router-link>
-    <router-view/>
+    <router-view />
   </div>
-
 </template>
 
 <style scoped>

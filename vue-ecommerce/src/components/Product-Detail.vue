@@ -2,9 +2,14 @@
 import { ref, onMounted } from "vue";
 import axios from "axios";
 import { useRoute } from "vue-router";
-
+import Header from '../components/Header.vue';
+import Footer from '../components/Footer.vue';
 export default {
     name: "ProductDetail",
+    components: {
+        Header,
+        Footer
+    },
     setup() {
         const route = useRoute();
         const productId = route.params.id;
@@ -27,6 +32,7 @@ export default {
 };
 </script>
 <template>
+    <Header />
     <div v-if="product" class="container mt-5 card">
         <div class="row">
             <div class="col-md-6 order-lg-0 order-md-0">
@@ -50,6 +56,7 @@ export default {
         </div>
     </div>
     <div v-else>Loading...</div>
+    <Footer />
 </template>
 
 
