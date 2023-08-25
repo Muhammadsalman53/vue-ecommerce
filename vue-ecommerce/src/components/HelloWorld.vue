@@ -80,6 +80,9 @@
                   <small class="text-body-white badge text-bg-success"
                     >Stock avaliable {{ item.stock }}</small
                   >
+                  <small class="m-2 text-body-white badge text-bg-success"
+                    >Rating {{ item.rating }}</small
+                  >
                 </p>
               </div>
             </div>
@@ -104,7 +107,7 @@ export default {
     const selectedCategory = ref(null);
     function fetchProducts(category) {
       axios
-        .get(`https://dummyjson.com/products?category=${category}`)
+        .get(`https://dummyjson.com/products/${category}`)
         .then((response) => {
           // Update the list with the fetched products
           list.value = response.data.products;
@@ -143,7 +146,7 @@ export default {
   },
 };
 </script>
-<style>
+<!-- <style>
 .active {
   color: blue; /* Customize the active category color */
 }
@@ -151,4 +154,4 @@ export default {
 .unselected {
   color: black; /* Customize the unselected category color */
 }
-</style>
+</style> -->
