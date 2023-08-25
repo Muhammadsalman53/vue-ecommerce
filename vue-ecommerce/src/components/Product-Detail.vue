@@ -54,7 +54,7 @@ export default {
       <div class="card-body">
         <h1>{{ product.title }}</h1>
         <h2 class="mb-3">${{ product.price }}</h2>
-        <p>{{ product.description }}</p>
+        <p class="control-width">{{ product.description }}</p>
         <div class="input-group mb-3">
           <label for="quantity" class="form-label">Quantity</label>
           <input
@@ -65,7 +65,7 @@ export default {
             min="1"
           />
         </div>
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-around">
           <button class="btn btn-primary">Add to Cart</button>
           <button class="btn btn-success">Buy Now</button>
         </div>
@@ -78,6 +78,15 @@ export default {
 
 <style scoped>
 /* Add custom styling if needed */
+.input-group{
+    width: 50%!important;
+    margin: auto!important;;
+
+}
+.control-width{
+    width: 70%;
+    margin: auto;
+}
 .product-image {
   position: relative;
 }
