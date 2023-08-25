@@ -17,3 +17,4 @@ coverage
 /cypress/videos/
 /cypress/screenshots/
 vue-ecommerce/package-lock.json
+vue-ecommerce\.gitignore
