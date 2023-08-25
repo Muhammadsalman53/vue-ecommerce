@@ -33,18 +33,17 @@ export default {
 </script>
 <template>
     <Header />
-    <div v-if="product" class="container mt-5 card">
-        <div class="row">
-            <div class="col-md-6 order-lg-0 order-md-0">
+    <div v-if="product" class="container m-auto mt-5 custom-card-lg text-center">
+        <div class="card">
                 <div class="product-image">
                     <img :src="product.images[0]" alt="Product Image" class="img-fluid card-img size-img">
                 </div>
-            </div>
-            <div class="col-md-6 order-lg-1 pt-lg-3 order-md-1 card-text-center">
+            
+            <div class="card-body">
                 <h1>{{ product.title }}</h1>
                 <h2 class="mb-3">{{ product.price }}</h2>
                 <p>{{ product.description }}</p>
-                <div class="mb-3">
+                <div class="input-group mb-3">
                     <label for="quantity" class="form-label">Quantity</label>
                     <input type="number" id="quantity" class="form-control" value="1" min="1">
                 </div>
