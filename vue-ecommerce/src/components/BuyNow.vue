@@ -7,7 +7,7 @@
       <div class="col-md-6 offset-md-3">
         <div class="card">
           <div class="card-body">
-            <h2 class="card-title">Buy Now</h2>
+            <h2 class="card-title text-center">Buy Now</h2>
             <form>
               <div class="mb-3">
                 <label for="name" class="form-label">Full Name</label>
@@ -22,6 +22,10 @@
                 <textarea id="address" class="form-control" rows="3" required></textarea>
               </div>
               <div class="mb-3">
+                <label for="address" class="form-label">Payment Address</label>
+                <textarea id="address" class="form-control" rows="3" required></textarea>
+              </div>
+              <div class="mb-3">
                 <label for="payment" class="form-label">Payment Method</label>
                 <select id="payment" class="form-select" required>
                   <option value="" disabled selected>Select payment method</option>
@@ -30,7 +34,10 @@
                   <option value="bank_transfer">Bank Transfer</option>
                 </select>
               </div>
+              <div>
               <button type="submit" class="btn btn-primary">Place Order</button>
+              <button type="submit" class="btn btn-bg-warning">Cancel Order</button>
+            </div>
             </form>
           </div>
         </div>
