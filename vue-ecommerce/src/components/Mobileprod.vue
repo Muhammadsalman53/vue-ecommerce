@@ -1,44 +1,39 @@
 <!--  {name: 'product', params: { id: item.id }} -->
 <template>
   <section class="pt-4" id="mobileproduct">
-    <div class="col-12" id="mble-products">
-      <div class="container">
-        <div class="col-12 pb-4" id="mob-head">
-          <h3>More in Mobile Products:</h3>
-          <button class="btn btn-lg btn-outline-primary" @click="$router.push('/productcategory')" type="button"><a
-              href="#">View All
-              ></a></button>
-        </div>
-        <div id="carouselMobControls" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <div class="d-flex justify-content-center flex-wrap">
-                <div v-for="(item, index) in slicedProducts" :key="item.id" class="card mx-2" style="width: 17rem;"
-                  @click=item_detail(item)>
-                  <!-- <router-link to="/product"> -->
-                  <img style="width: 100%; height: 200px;" :src="item.images[0]" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">{{ item.title }}</h5>
-                    <p class="card-text">{{ item.description }}</p>
-                    <p class="card-footer">{{ item.price }} $</p>
-                    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-
-                  </div>
-                  <!-- </router-link> -->
-                </div>
+    <div class="container">
+      <div class="row" id="mob-head">
+          <div class="col-lg-4 mt-3 col-md-12 col-sm-12" id="category-head">
+            <h3>All Categories Products:</h3>
+          </div>
+          <div class="col-lg-7 my-3 col-md-12 col-sm-12" id="category-btns">
+            <select class="form-select form-select-md" aria-label="Default select categories">
+              <option selected>All categories</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-md btn-outline-success" type="submit">Search</button>
+            </form>
+            <button class="btn btn-md btn-outline-primary" @click="$router.push('/productcategory')" type="button">View All ></button>
+          </div>
+      </div>
+      <div class="row" id="cards-wrapp">
+        <div class="mb-4" v-for="(item, index) in list" :key="item.id" id="landing-cards" >
+          <div class="card" @click="item_detail(item)" style=" min-height: 130px;">
+            <img :src="item.images[0]" style="height: 250px;" class="card-img-top p-4" alt="...">
+            <hr>
+            <div class="card-body">
+              <h5 class="card-title">{{ item.title }}</h5>
+              <p style="min-height: 100px;" class="card-text">{{ item.description }}</p>
+              <div class="card-footer ">
+                <span class="text-start pe-auto">Price:</span>
+                <span class="fw-bold float-end">${{ item.price }}</span>  
               </div>
             </div>
           </div>
-          <button class="carousel-control-prev" type="button" @click="goToPreviousPage"
-            data-bs-target="#carouselMobControls" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" @click="goToNextPage" data-bs-target="#carouselMobControls"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
         </div>
       </div>
     </div>
@@ -47,19 +42,20 @@
 
 <script>
 import axios from 'axios';
-import { onMounted, ref, computed } from 'vue';
+import { onMounted, ref } from 'vue';
 import { useRouter } from "vue-router"
+
 export default {
   name: 'Mobileprod',
   setup() {
     const list = ref([]);
-    const currentPage = ref(0);
-    const route = useRouter()
+    const route = useRouter();
+
     function item_detail(item) {
       console.log(item);
       route.push({ name: 'product_detail', path: '/product_detail', params: { id: item.id } });
-
     }
+
     onMounted(async () => {
       try {
         const response = await axios.get("https://dummyjson.com/products");
@@ -69,26 +65,67 @@ export default {
       }
     });
 
-    const slicedProducts = computed(() => {
-      const startIndex = currentPage.value * 3;
-      const endIndex = startIndex + 4;
-      return list.value.slice(startIndex, endIndex);
-    });
-
-    const goToPreviousPage = () => {
-      currentPage.value = Math.max(currentPage.value - 1, 0);
-    };
-
-    const goToNextPage = () => {
-      const maxPage = Math.ceil(list.value.length / 4) - 1;
-      currentPage.value = Math.min(currentPage.value + 1, maxPage);
-    };
     return {
-      slicedProducts,
-      goToPreviousPage,
-      goToNextPage,
+      list,
       item_detail
     };
   }
 };
 </script>
+
+<style scoped>
+ .mb-4 {
+    margin-bottom: 1.5rem;
+  }
+
+  /* ... your existing styles ... */
+
+  @media (max-width: 768px) {
+    .row.justify-content-center {
+      justify-content: flex-start; /* Adjust alignment for small screens */
+    }
+  }
+  @media screen and (min-width: 1200px) and (max-width: 1500px) {
+    div#landing-cards{
+      width: 25%;
+    }
+  }
+  @media screen and (min-width: 992px) and (max-width: 1199px) {
+    div#landing-cards{
+      width: 33%;
+    }
+    div#category-btns{
+      flex-wrap: wrap;
+    }
+    div#category-btns button {
+      margin-top: 10px;
+    }
+  }
+  @media screen and (max-width: 991px){
+    div#landing-cards{
+      width: 49% !important;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    div#category-btns{
+      flex-wrap: wrap;
+    }
+    div#category-btns button {
+      margin-top: 10px;
+    }
+  }
+  @media screen and (max-width: 576px){
+    div#landing-cards{
+      width: 90% !important;
+    margin: auto;
+    }
+  }
+
+  .card{
+    cursor: pointer;
+  }
+  div#landing-cards {
+    width: 25%;
+}
+
+</style>

@@ -1,4 +1,4 @@
-.container-fluid{
+header nav .container-fluid{
   width: 84% !important;
 }
 header{
@@ -19,16 +19,16 @@ div#navbarSupportedContent {
 div#search {
   margin-left: 13px;
 }
+div#category-btns {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
 section#banner {
   padding: 20px 0;
 }
-button.carousel-control-next, button.carousel-control-prev {
-  background-color: skyblue;
-  width: 6%;
-}
-div#mob-head {
-  display: flex;
-  justify-content: space-between;
+div#category-btns .form-select {
+  width: 34% !important;
 }
 div#mob-head button a{
   text-decoration: none;
