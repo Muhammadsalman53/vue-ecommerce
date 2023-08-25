@@ -34,14 +34,22 @@ export default {
 <template>
     <Header />
     <div v-if="product" class="container m-auto mt-5 custom-card-lg text-center">
-        <div class="card">
+        <div class="card shadow">
                 <div class="product-image">
                     <img :src="product.images[0]" alt="Product Image" class="img-fluid card-img size-img">
+                    <div class="shipping-text over-btn">
+                    <div class="social-icons">
+            <i class="bi bi-truck"></i>
+            <i class="bi bi-facebook"></i>
+            <i class="bi bi-instagram"></i>
+            <i class="bi bi-snapchat"></i>
+          </div>
+        </div>
                 </div>
             
             <div class="card-body">
                 <h1>{{ product.title }}</h1>
-                <h2 class="mb-3">{{ product.price }}</h2>
+                <h2 class="mb-3">${{ product.price }}</h2>
                 <p>{{ product.description }}</p>
                 <div class="input-group mb-3">
                     <label for="quantity" class="form-label">Quantity</label>
@@ -62,18 +70,43 @@ export default {
 
 <style scoped>
 /* Add custom styling if needed */
+.product-image{
+    position: relative;
+}
+.social-icons i {
+  text-align: end;
+  display: block;
+  color: #002f34;
+  font-size: 30px;
+  padding-right: 20px;
+}
+.over-btn {
+  position: absolute;
+  z-index: 9;
+  margin-top: 4%;
+  top: 2%;
+  right: 5%;
+}
+
 .size-img {
-    width: 100%;
-    height: 300px;
+    padding-top: 20px;
+    width: 80%;
+    height: 350px;
+}
+@media (min-width: 992px) { /* Large screens and up */
+  .custom-card-lg {
+    width: 50%;
+  }
 }
 
-@media (max-width: 767px) {
-    .product-image {
-        text-align: center;
-    }
-
-    .card-text-center {
-        text-align: center;
-    }
+@media (min-width: 768px) and (max-width: 991.98px) { /* Medium screens */
+  .custom-card-md {
+    width: 75%;
+  }
 }
+
+
+
+
+
 </style>

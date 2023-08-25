@@ -4,6 +4,7 @@ import SignUp from "../components/SignUp.vue";
 import HomeView from "../views/HomeView.vue";
 import productDetail from "../components/Product-Detail.vue";
 import ProductCategory from "../components/HelloWorld.vue";
+import BuyNow from "../components/BuyNow.vue";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   
@@ -34,6 +35,12 @@ const router = createRouter({
       path: '/productcategory',
       name: 'productcategory',
       component: ProductCategory,
+      meta: {requiresAuth : true}
+    },
+    {
+      path: '/buynow',
+      name: 'buynow',
+      component: BuyNow,
       meta: {requiresAuth : true}
     }
   ],
