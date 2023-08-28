@@ -31,7 +31,9 @@
             <button @click="removeFromCart(item)" class="btn btn-danger">
               Remove
             </button>
+            <h1>{{ quantity }}</h1>
           </div>
+          
         </div>
       </div>
       <div v-else>
@@ -50,9 +52,7 @@
 
 <script>
 import { defineComponent, computed } from "vue";
-import { ref, onMounted } from "vue";
-import { useRoute, useRouter } from "vue-router";
-import axiosInstance from "../utils/axios";
+
 import { useMyStore } from "../stores/counter.js";
 import Header from "../components/Header.vue";
 
@@ -67,35 +67,16 @@ export default defineComponent({
     };
   },
   setup() {
-    const router = useRouter();
-    const route = useRoute();
-    const productId = route.params.id;
     const store = useMyStore();
 
-    const addToCart = (item) => {
-      store.commit("addToCart", item);
-    };
     const removeFromCart = (item) => {
       store.removeFromCart(item);
     };
 
     const cartItems = computed(() => store.cartItems);
 
-    onMounted(() => {
-      axiosInstance
-        .get(`/products/${productId}`)
-        .then((res) => {
-          cartItems.value.push(res.data);
-          console.log(cartItems.value);
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    });
-
     return {
       store,
-      addToCart,
       removeFromCart,
       cartItems,
     };

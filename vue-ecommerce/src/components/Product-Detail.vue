@@ -5,6 +5,7 @@ import { useRoute, useRouter } from "vue-router";
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
 import router from "../router";
+import { useMyStore } from "../stores/counter";
 export default {
   name: "ProductDetail",
   components: {
@@ -14,16 +15,19 @@ export default {
   setup() {
     const router = useRouter();
     const route = useRoute();
+    const store = useMyStore()
     const productId = route.params.id;
     const product = ref(null);
 
     function addToCart(product) {
-      console.log(product);
-      router.push({
-        name: "CartView",
-        path: "/cart",
-        params: { id: product.id },
-      });
+      store.cartItems.push(product)
+       console.log(product);
+      // router.push({
+      //   name: "CartView",
+      //   path: "/cart",
+      //   params: { id: product.id },
+      // });
+      router.push('/cart')
     }
 
     function backToHome(){
@@ -48,6 +52,7 @@ export default {
       backToHome,
       buyNow,
       addToCart,
+      store
     };
   },
 };

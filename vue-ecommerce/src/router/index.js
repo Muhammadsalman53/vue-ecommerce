@@ -40,7 +40,7 @@ const router = createRouter({
       component: BuyNow,
     },
     {
-      path: "/cart/:id",
+      path: "/cart",
       name: "CartView",
       meta: { requiresAuth: true },
       component: Cart,

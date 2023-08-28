@@ -70,7 +70,7 @@ export default {
     }
 
     function goToCart(){
-      route.push("/cart/:id")
+      route.push("/cart")
     }
     function gotToHome(){
       route.push("/home")
