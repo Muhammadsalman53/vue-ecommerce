@@ -3,6 +3,7 @@ import Login from "../components/Login.vue";
 import SignUp from "../components/SignUp.vue";
 import HomeView from "../views/HomeView.vue";
 import productDetail from "../components/Product-Detail.vue";
+import BuyNow from "../components/BuyNow.vue";
 
 // import BuyNow from "../components/BuyNow.vue";
 const router = createRouter({
@@ -30,6 +31,11 @@ const router = createRouter({
       name: "product_detail",
       component: productDetail,
       meta: { requiresAuth: true },
+    },
+    {
+      path: "/buynow",
+      name: "buynow",
+      component: BuyNow,
     },
   ],
 });
