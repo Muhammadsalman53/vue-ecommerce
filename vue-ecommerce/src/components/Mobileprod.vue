@@ -4,7 +4,7 @@
     <div class="container">
       <div class="row" id="mob-head">
         <div class="col-lg-4 mt-3 col-md-12 col-sm-12" id="category-head">
-          <h3>All Categories Products:</h3>
+          <h3>All Categories Here:</h3>
         </div>
         <div class="col-lg-7 my-3 col-md-12 col-sm-12" id="category-btns">
           <select

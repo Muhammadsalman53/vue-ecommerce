@@ -1,9 +1,10 @@
 <script>
 import { ref, onMounted } from "vue";
 import axiosInstance from "../utils/axios";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
+import router from "../router";
 export default {
   name: "ProductDetail",
   components: {
@@ -11,9 +12,16 @@ export default {
     Footer,
   },
   setup() {
+    const router = useRouter();
     const route = useRoute();
     const productId = route.params.id;
     const product = ref(null);
+    function backToHome(){
+      router.push('/home');
+    }
+    function buyNow(){
+      router.push('/buynow');
+    }
     onMounted(() => {
       axiosInstance
         .get(`/products/${productId}`)
@@ -27,13 +35,19 @@ export default {
 
     return {
       product,
+      backToHome,
+      buyNow
     };
   },
 };
 </script>
 <template>
   <Header />
-  <div v-if="product" class="container m-auto mt-5 custom-card-lg text-center">
+
+  <div v-if="product" class="container m-auto mt-2 custom-card-lg text-center">
+    <div class="d-flex justify-content-start" id="back-btn">
+      <button class="text" @click="backToHome"><i class="bi bi-arrow-left"></i></button>
+    </div>
     <div class="card shadow">
       <div class="product-image">
         <img
@@ -43,7 +57,7 @@ export default {
         />
         <div class="shipping-text over-btn">
           <div class="social-icons">
-            <i class="bi bi-truck"></i>
+            <a style="cursor: pointer;" @click="buyNow"><i class="bi bi-truck"></i></a>
             <i class="bi bi-facebook"></i>
             <i class="bi bi-instagram"></i>
             <i class="bi bi-snapchat"></i>
@@ -55,7 +69,7 @@ export default {
         <h1>{{ product.title }}</h1>
         <h2 class="mb-3">${{ product.price }}</h2>
         <p class="control-width">{{ product.description }}</p>
-        <div class="input-group mb-3" id="product-quantity">
+        <!-- <div class="input-group mb-3" >
           <label for="quantity" class="form-label">Quantity</label>
           <input
             type="number"
@@ -64,10 +78,10 @@ export default {
             value="1"
             min="1"
           />
-        </div>
-        <div class="d-flex justify-content-around">
+        </div> -->
+        <div class="d-flex justify-content-around" id="product-quantity">
           <button class="btn btn-primary">Add to Cart</button>
-          <button class="btn btn-success">Buy Now</button>
+          <button class="btn btn-success" @click="buyNow">Buy Now</button>
         </div>
       </div>
     </div>
@@ -78,6 +92,16 @@ export default {
 
 <style scoped>
 /* Add custom styling if needed */
+#back-btn{
+  padding: 12px 0;
+}
+#back-btn button{
+  background-color: #fff;
+  border: none;
+}
+#back-btn button i{
+  font-size: 2rem;
+}
 .input-group{
     width: 50%!important;
     margin: auto!important;;
