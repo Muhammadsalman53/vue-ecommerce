@@ -25,16 +25,12 @@
       </div>
       <div class="row" id="cards-wrapp">
         <div
-          class="mb-4"
+          class="mb-4 d-flex"
           v-for="(item, index) in list"
           :key="item.id"
           id="landing-cards"
         >
-          <div
-            class="card"
-            @click="item_detail(item)"
-            style="min-height: 130px"
-          >
+          <div class="card d-flex flex-column" @click="item_detail(item)">
             <img
               :src="item.images[0]"
               style="height: 250px"
@@ -42,11 +38,9 @@
               alt="..."
             />
             <hr />
-            <div class="card-body">
+            <div class="card-body flex-grow-1">
               <h5 class="card-title">{{ item.title }}</h5>
-              <p style="min-height: 100px" class="card-text">
-                {{ item.description }}
-              </p>
+              <p class="card-text">{{ item.description }}</p>
               <div class="card-footer">
                 <span class="text-start pe-auto">Price:</span>
                 <span class="fw-bold float-end">${{ item.price }}</span>

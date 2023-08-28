@@ -27,11 +27,16 @@
             <li class="nav-item">
               <div class="col-lg-12 col-md-12 col-sm-12" id="cart">
                 <button
-                  class="btn btn-md btn-outline-primary"
-                  id="cart-btn"
+                  style="display: block; margin-top: 15px; margin-right: 5px"
                   type="button"
+                  class="btn btn-sm btn-outline-primary position-relative"
                 >
                   <i class="bi bi-cart"></i>
+                  <span
+                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success"
+                  >
+                    {{ store.cart }}
+                  </span>
                 </button>
               </div>
             </li>
@@ -44,7 +49,13 @@
                 data-mdb-toggle="dropdown"
                 aria-expanded="false"
               >
-                <i class="bi bi-person mx-1"></i> Profile
+                <!-- <i class="bi bi-person mx-1"></i> Profile -->
+                <img
+                  src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+                  class="rounded-circle img-fluid"
+                  style="width: 40px"
+                  alt="Avatar"
+                />
               </a>
               <!-- Dropdown menu -->
               <ul
@@ -83,16 +94,19 @@
 
 <script>
 import { useRouter } from "vue-router";
+import { useMyStore } from "../stores/counter.js";
 export default {
   name: "Header",
   setup() {
     const route = useRouter();
+    const store = useMyStore();
     function logout() {
       localStorage.removeItem("token");
       route.push("/");
     }
     return {
       logout,
+      store,
     };
   },
 };
