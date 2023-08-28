@@ -4,7 +4,7 @@ import SignUp from "../components/SignUp.vue";
 import HomeView from "../views/HomeView.vue";
 import productDetail from "../components/Product-Detail.vue";
 import BuyNow from "../components/BuyNow.vue";
-import Cart from "../views/Cart.vue"
+import Cart from "../views/Cart.vue";
 
 // import BuyNow from "../components/BuyNow.vue";
 const router = createRouter({
@@ -36,11 +36,13 @@ const router = createRouter({
     {
       path: "/buynow",
       name: "buynow",
+      meta: { requiresAuth: true },
       component: BuyNow,
     },
     {
       path: "/cart/:id",
       name: "CartView",
+      meta: { requiresAuth: true },
       component: Cart,
     },
   ],
