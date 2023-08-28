@@ -51,11 +51,11 @@ export default {
         </div>
       </div>
 
-      <div class="card-body">
+      <div class="card-body" id="product-descript">
         <h1>{{ product.title }}</h1>
         <h2 class="mb-3">${{ product.price }}</h2>
         <p class="control-width">{{ product.description }}</p>
-        <div class="input-group mb-3">
+        <div class="input-group mb-3" id="product-quantity">
           <label for="quantity" class="form-label">Quantity</label>
           <input
             type="number"

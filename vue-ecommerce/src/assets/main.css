@@ -12,6 +12,9 @@ div#navbarSupportedContent {
   justify-content: end;
   text-align: center;
 }
+#product-descript #product-quantity {
+  padding: 15px 0;
+}
 #navbarSupportedContent #user-logo p{
   width: 54%;
   margin-top: 12px;;
