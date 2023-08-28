@@ -16,6 +16,16 @@ export default {
     const route = useRoute();
     const productId = route.params.id;
     const product = ref(null);
+
+    function addToCart(product) {
+      console.log(product);
+      router.push({
+        name: "CartView",
+        path: "/cart",
+        params: { id: product.id },
+      });
+    }
+
     function backToHome(){
       router.push('/home');
     }
@@ -36,7 +46,8 @@ export default {
     return {
       product,
       backToHome,
-      buyNow
+      buyNow,
+      addToCart,
     };
   },
 };
@@ -80,7 +91,7 @@ export default {
           />
         </div> -->
         <div class="d-flex justify-content-around" id="product-quantity">
-          <button class="btn btn-primary">Add to Cart</button>
+          <button class="btn btn-primary" @click="addToCart(product)">Add to Cart</button>
           <button class="btn btn-success" @click="buyNow">Buy Now</button>
         </div>
       </div>
