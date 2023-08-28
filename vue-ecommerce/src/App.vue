@@ -1,7 +1,7 @@
 <script setup>
 // import Header from './components/Header.vue';
 // import Footer from './components/Footer.vue';
-import { RouterView } from 'vue-router';
+ import { RouterView } from 'vue-router';
 </script>
 
 <template>
@@ -9,13 +9,13 @@ import { RouterView } from 'vue-router';
   <RouterView></RouterView>
   <Footer /> -->
 
-  <div id="app">
+  <div>
     <router-link to="/"></router-link>
     <router-view />
   </div>
 </template>
 
-<style scoped>
+<!-- <style scoped>
 header {
   line-height: 1.5;
   max-height: 100vh;
@@ -77,4 +77,4 @@ nav a:first-of-type {
     margin-top: 1rem;
   }
 }
-</style>
+</style> -->
